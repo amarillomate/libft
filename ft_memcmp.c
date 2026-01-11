@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 17:13:19 by andrgarc          #+#    #+#             */
-/*   Updated: 2026/01/10 22:41:16 by andrgarc         ###   ########.fr       */
+/*   Created: 2026/01/10 14:09:18 by andrgarc          #+#    #+#             */
+/*   Updated: 2026/01/10 22:50:41 by andrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*srcn;
-	unsigned char 		*destn;
+	const unsigned char	*s1n;
+	const unsigned char	*s2n;
+	size_t			i;
 
-	if (!dest || !src)
-		return (dest);
+	if (!s1 || !s2)
+		return (s1 - s2);
 
-	srcn = (const unsigned char *)src;
-	destn = (unsigned char *)dest;
-	if (destn < srcn)
+	s1n = (const unsigned char *)s1;
+	s2n = (const unsigned char *)s2;
+	
+	i = 0;	
+	while (i < n)
 	{
-		ft_memcpy(dest, src, n);
+		if (s1n[i] != s2n[i])
+			return (s1n[i] - s2n[i]);
+		i++;
 	}
-	else
-	{
-		while (n > 0)
-		{
-		n--;
-		destn[n] = srcn[n];
-		}
-	}
-	return (dest);
+	return (0);
 }

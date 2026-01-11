@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 17:13:19 by andrgarc          #+#    #+#             */
-/*   Updated: 2026/01/10 22:41:16 by andrgarc         ###   ########.fr       */
+/*   Created: 2026/01/11 00:14:13 by andrgarc          #+#    #+#             */
+/*   Updated: 2026/01/11 00:26:41 by andrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void *ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	const unsigned char	*srcn;
-	unsigned char 		*destn;
+	char	*new;
+	size_t	setlen;
+	size_t	s1len;
+	size_t	i;
 
-	if (!dest || !src)
-		return (dest);
-
-	srcn = (const unsigned char *)src;
-	destn = (unsigned char *)dest;
-	if (destn < srcn)
-	{
-		ft_memcpy(dest, src, n);
-	}
-	else
-	{
-		while (n > 0)
-		{
-		n--;
-		destn[n] = srcn[n];
-		}
-	}
-	return (dest);
+	new = malloc((setlen + 1) * (sizeof(char)));
+	if (new == NULL)
+		return (NULL);
+	i = 0;
+	while (s1[i] == set[i])
+		i++;
 }

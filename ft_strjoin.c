@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 17:13:19 by andrgarc          #+#    #+#             */
-/*   Updated: 2026/01/10 22:41:16 by andrgarc         ###   ########.fr       */
+/*   Created: 2026/01/10 23:34:52 by andrgarc          #+#    #+#             */
+/*   Updated: 2026/01/11 00:12:31 by andrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	const unsigned char	*srcn;
-	unsigned char 		*destn;
-
-	if (!dest || !src)
-		return (dest);
-
-	srcn = (const unsigned char *)src;
-	destn = (unsigned char *)dest;
-	if (destn < srcn)
+	char	*new;
+	size_t	s1len;
+	size_t	s2len;
+	size_t	i;
+	size_t	j;
+	
+	s1len = ft_strlen(s1);
+	s2len = ft_strlen(s2);
+	new = malloc((s1len + s2len + 1) * (sizeof(char)));
+	if(new == NULL)
+		return(NULL);
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
 	{
-		ft_memcpy(dest, src, n);
+		new[i] = s1[i];
+		i++;
 	}
-	else
+	while (s2[j] != '\0')
 	{
-		while (n > 0)
-		{
-		n--;
-		destn[n] = srcn[n];
-		}
+		new[i + j] = s2[j];
+		j++;
 	}
-	return (dest);
+	return (new);
 }

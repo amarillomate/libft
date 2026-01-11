@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrgarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 17:13:19 by andrgarc          #+#    #+#             */
-/*   Updated: 2026/01/10 22:41:16 by andrgarc         ###   ########.fr       */
+/*   Created: 2026/01/10 22:50:55 by andrgarc          #+#    #+#             */
+/*   Updated: 2026/01/10 23:34:17 by andrgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	const unsigned char	*srcn;
-	unsigned char 		*destn;
+	char		*new;
+	size_t		i;
 
-	if (!dest || !src)
-		return (dest);
-
-	srcn = (const unsigned char *)src;
-	destn = (unsigned char *)dest;
-	if (destn < srcn)
+	new = malloc((len + 1) * (sizeof(char)));
+	if (new == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len && s[start + i] != '\0')
 	{
-		ft_memcpy(dest, src, n);
+		new[i] = s[start + i];
+		i++;
 	}
-	else
-	{
-		while (n > 0)
-		{
-		n--;
-		destn[n] = srcn[n];
-		}
-	}
-	return (dest);
+	new[i] ='\0';
+	return (new);
 }
